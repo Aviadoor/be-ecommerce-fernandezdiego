@@ -1,14 +1,13 @@
-# Imagen base ligera con Java 17 para ejecucion en Linux
-FROM eclipse-temurin:17-jdk-alpine
-
-# Directorio de trabajo dentro del contenedor
+# Etapa 1: Compilar el proyecto con Maven y Java 17
+FROM maven:3.9.6-eclipse-temurin-17-alpine AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copia el archivo JAR compilado por Maven al contenedor
-COPY target/be-ecommerce-fernandezdiego-0.0.1-SNAPSHOT.jar app.jar
-
-# Expone el puerto 8080 del API REST
+# Etapa 2: Ejecutar el JAR en una imagen ligera
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/target/be-ecommerce-fernandezdiego-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-
-# Comando de arranque del contenedor
 ENTRYPOINT ["java", "-jar", "app.jar"]

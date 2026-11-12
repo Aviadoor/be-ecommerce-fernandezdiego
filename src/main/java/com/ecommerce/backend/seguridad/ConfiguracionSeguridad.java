@@ -60,16 +60,16 @@ public class ConfiguracionSeguridad {
             .build();
     }
 
-    // Crea el usuario admin por ORM automáticamente al levantar el proyecto
+    // Crea el usuario con tu nombre por ORM automaticamente en PostgreSQL
     @Bean
     public CommandLineRunner inicializarUsuariosOrm(UsuarioRepositorio repo, PasswordEncoder encoder) {
         return args -> {
-            if (repo.findByUsername("admin").isEmpty()) {
-                Usuario admin = new Usuario();
-                admin.setUsername("admin");
-                admin.setPassword(encoder.encode("admin123"));
-                admin.setRol("ADMIN");
-                repo.save(admin);
+            if (repo.findByUsername("diego").isEmpty()) {
+                Usuario usuarioDiego = new Usuario();
+                usuarioDiego.setUsername("diego");
+                usuarioDiego.setPassword(encoder.encode("diego123"));
+                usuarioDiego.setRol("ADMIN");
+                repo.save(usuarioDiego);
             }
         };
     }
