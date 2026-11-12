@@ -3,7 +3,7 @@ package com.ecommerce.backend.entidad;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
+//Entidad de Porducto
 @Entity
 @Table(name = "productos")
 @NamedQuery(

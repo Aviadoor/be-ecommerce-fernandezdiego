@@ -1,7 +1,7 @@
 package com.ecommerce.backend.entidad;
 
 import jakarta.persistence.*;
-
+//Entidad de Usuario
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
