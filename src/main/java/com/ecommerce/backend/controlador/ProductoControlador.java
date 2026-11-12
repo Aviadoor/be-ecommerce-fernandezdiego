@@ -5,7 +5,7 @@ import com.ecommerce.backend.servicio.ProductoServicio;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
+//Controlador de Producto
 @RestController
 @RequestMapping("/api/productos")
 @CrossOrigin(origins = "*")
